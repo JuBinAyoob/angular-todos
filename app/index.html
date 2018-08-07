@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app="todosApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Google Phone Gallery</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="app.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-controller="TodosListController">
+      <div class="header">
+        <h1>To Do list</h1>
+        <input type="text" class="add-todo" ng-model="addTodo">
+        <button ng-click="todoAdd()">Add</button>
+      </div>
+
+      Hide todos: <input type="checkbox" ng-model="hideTodos">
+      <div class="todo-data" ng-hide="hideTodos">
+        <ul>
+          <li ng-repeat="todo in todos | orderBy:'des'">
+            <span>{{todo.des}}</span>
+            <i class="fas fa-times" id ="{{ todo.id }}" ng-click="todoDelete(todo.id)"></i>
+          </li>
+        </ul>
+      </div>
+
+  </body>
+</html>
